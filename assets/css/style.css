@@ -137,7 +137,7 @@ section[id] { scroll-margin-top: 84px; }
 }
 
 /* ---------- Avaliações ---------- */
-.reviews { padding: clamp(80px, 10vw, 140px) 0; }
+.reviews { padding: clamp(80px, 10vw, 140px) 0 clamp(48px, 6vw, 72px); }
 .reviews__grid { display: grid; gap: 14px; }
 .rv { padding: 26px; border-radius: 22px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); display: flex; flex-direction: column; justify-content: space-between; gap: 18px; }
 .rv p { font: 500 clamp(17px, 1.4vw, 19px)/1.5 var(--sans); }
@@ -185,3 +185,35 @@ section[id] { scroll-margin-top: 84px; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
   .js .blinds i { transform: scaleY(0); transition: none; }
 }
+
+/* ---------- Mural com todas as avaliações ---------- */
+.wall { padding: 0 0 clamp(80px, 10vw, 130px); }
+.wall__head { display: grid; gap: 18px; margin-bottom: 28px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { min-height: 44px; padding: 0 16px; border: 0; border-radius: 999px; cursor: pointer; background: var(--white); box-shadow: inset 0 0 0 1px var(--line);
+  font: 500 15px/1 var(--sans); color: var(--ink); transition: background-color .3s, color .3s, box-shadow .3s; }
+.chip span { margin-left: 4px; color: var(--muted); font-size: 13px; }
+.chip.is-on { background: var(--deep); color: #fff; box-shadow: none; }
+.chip.is-on span { color: var(--aqua); }
+.wall__grid { columns: 1; column-gap: 14px; }
+.wall__grid article { break-inside: avoid; margin-bottom: 14px; padding: 22px; border-radius: 20px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); animation: pop .6s var(--ease) both; }
+.wall__grid p { font-size: 16px; line-height: 1.55; }
+.wall__grid footer { margin-top: 12px; display: flex; justify-content: space-between; gap: 10px; font-size: 13.5px; }
+.wall__grid footer b { font-weight: 600; color: var(--deep); }
+.wall__grid footer i { font-style: normal; color: #e7a83a; letter-spacing: 1px; }
+.wall__more { margin-top: 18px; display: flex; justify-content: center; }
+.wall__more[hidden] { display: none; }
+@keyframes pop { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (min-width: 700px) { .wall__grid { columns: 2; } }
+@media (min-width: 1080px) { .wall__grid { columns: 3; } .wall__head { grid-template-columns: auto 1fr; align-items: center; } .chips { justify-content: flex-end; } }
+@media (prefers-reduced-motion: reduce) { .wall__grid article { animation: none; } }
+
+/* ---------- Tratamentos ---------- */
+.care { padding: clamp(40px, 6vw, 80px) 0 clamp(80px, 10vw, 130px); }
+.care__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: c; }
+.care__list li { counter-increment: c; display: grid; grid-template-columns: 44px 1fr; gap: 2px 14px; align-items: baseline; padding: 20px 22px; border-radius: 18px; background: var(--white); box-shadow: inset 0 0 0 1px var(--line); }
+.care__list li::before { content: counter(c, decimal-leading-zero); grid-row: span 2; font: 700 15px/1.6 var(--display); color: var(--sea); }
+.care__list b { font: 600 19px/1.25 var(--display); }
+.care__list span { font-size: 15px; color: var(--muted); }
+@media (min-width: 700px) { .care__list { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1080px) { .care__list { grid-template-columns: repeat(4, 1fr); } .care__list li { grid-template-columns: 1fr; } .care__list li::before { grid-row: auto; margin-bottom: 18px; } }
